@@ -32,11 +32,8 @@ const MapContainer = (props) => {
             return   <Feature
                         key={location.id}
                         coordinates={[location.longitude, location.latitude]}
-                        onMouseEnter={()=>{props.handleHover()}}
-                    />
-                    
-          }) : null
-          }
+                        onMouseEnter={(e)=>{props.handleHover(e, location)}}/>
+                     }) : null}
         </Layer>
       </Map>
     </div>
@@ -44,6 +41,16 @@ const MapContainer = (props) => {
 }
 
 export default MapContainer
+// {props.currentPopupObj ?
+  //   <Popup
+  //     coordinates={[props.currentPopupObj.lng, props.currentPopupObj.lat]}
+  //     offset={{
+    //       'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
+    //     }}
+    //     key={props.currentPopupObj.id}
+    //     className="popup">
+    //     <h3>{props.currentPopupObj.title}</h3>
+    //   </Popup> : null}
 
 // <Popup
 // coordinates={[-77.032610, 38.898310]}

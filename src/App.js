@@ -11,7 +11,8 @@ export default class App extends React.Component {
     super()
       this.state = {
         allLocations: [],
-        focus: true,
+        currentPopupObj: null,
+
       }
   }
 
@@ -25,12 +26,12 @@ componentDidMount(){
   )
 }
 
-handleHover = (eventObj) => {
-  console.log("we're hovering")
-  this.state.focus ? this.setState({focus: null}) : this.setState({focus: eventObj})
+handleHover = (e, location) => {
+  console.log(location)
+  this.setState({ currentPopupObj: {location} })
 }
 
-handleLocation = () => {
+handleLocation = (e) => {
   console.log("clicky")
 }
 
@@ -48,7 +49,7 @@ handleLocation = () => {
                       <MapContainer
                       allLocations={this.state.allLocations}
                       handleHover={this.handleHover}
-                      showPopup={this.state.showPopup}
+                      currentPopupObj={this.state.currentPopupObj}
                       />
                     </div>
                     <div>
