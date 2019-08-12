@@ -36,12 +36,14 @@ body {
   }
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: column;
-}
-
 h1 {
   font-size: 3.8em; /* 40px/16=2.5em */
   color: green;
 }
+
+/* .location-container {
+  padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+} */

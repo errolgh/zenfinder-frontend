@@ -28,7 +28,7 @@ componentDidMount(){
       <div className="App">
       <Nav/>
         <Header/>
-        <div className="ui two column grid col-height">
+        <div className="ui two column grid col-height ">
           <div className= "row">
             <div>
               <MapContainer
