@@ -13,6 +13,7 @@ const MapContainer = ({ lat, long, sprite }) => {
       style="mapbox://styles/mapbox/streets-v9"
       center={[-77.032610, 38.898310]}
       zoom={[12]}
+      pitch={[8]}
       containerStyle={{
         height: '600px',
         width: '800px'
