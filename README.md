@@ -67,3 +67,39 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # zenfinder-frontend
+
+
+8/12/19
+- today's goals:
+  finish skateboard activeRecord models,
+  get seed locations to show up on map component,
+  figure out how to connect locationContainer data with Map Features,
+
+8/13/19
+- tomorrow's goals:
+  figure out postgreSQL gui,
+  routes,
+
+zoom meeting goals:
+- orientation (time, scope of work)
+<!-- - get unstuck -->
+<!-- - work through block -->
+- suggestions going forward
+
+- hover tooltip and onClick for feature should be coded as two different features
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#

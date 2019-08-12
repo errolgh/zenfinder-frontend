@@ -8,10 +8,13 @@ export default class LocationContainer extends React.Component {
   }
     render(){
       return(
-        <div>
+        <div className= "location-container">
           {
             this.props.allLocations.map(location => {
-              return <Location location={location}/>
+              return <Location
+                        location={location}
+                        handleLocation={this.props.handleLocation}
+                    />
             })
           }
         </div>
