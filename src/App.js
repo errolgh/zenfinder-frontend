@@ -9,17 +9,18 @@ export default class App extends React.Component {
   constructor(){
     super()
       this.state = {
-        locationArray: []
+        allLocations: []
       }
   }
 
 componentDidMount(){
-  // fetch(`localhost:3001/locations`)
-  // .then(r => r.json())
-  // .then()
-  // this.setState({
-  //   locationArray: []
-  // })
+  fetch(`http://localhost:3001/locations`)
+  .then(r => r.json())
+  .then(locationsArray =>
+    this.setState({
+      allLocations: locationsArray
+    })
+  )
 }
 
   render(){
@@ -29,8 +30,16 @@ componentDidMount(){
         <Header/>
         <div className="ui two column grid col-height">
           <div className= "row">
-            <div><MapContainer/></div>
-            <div><LocationContainer/></div>
+            <div>
+              <MapContainer
+                allLocations={this.state.allLocations}
+              />
+            </div>
+            <div>
+              <LocationContainer
+                allLocations={this.state.allLocations}
+              />
+            </div>
           </div>
         </div>
       </div>
