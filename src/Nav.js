@@ -2,7 +2,7 @@ import React from 'react'
 export default class Nav extends React.Component {
   render(){
     return(
-      <div class="ui inverted large menu teal">
+      <div class="ui inverted large menu black">
   <a class="active item">
     Home
   </a>
