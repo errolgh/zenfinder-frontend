@@ -86,7 +86,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
+-activeStyle attribute for NavLink if possible! may not working semantic UI
+-may have to give the rating node a classname of "item" to show up in the popup
+-continue to work with activerecord
 
+- wrap everything in a router, implement route control flow, and switch if you want, then create link tos where needed
 
 
 
