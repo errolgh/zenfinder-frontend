@@ -7,7 +7,7 @@ export default class Nav extends React.Component {
     Home
   </a>
   <a className="item">
-    Messages
+    Locations
   </a>
   <div className="right menu">
     <div className="item">

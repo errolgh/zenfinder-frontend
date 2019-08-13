@@ -44,6 +44,9 @@ const MapContainer = (props) => {
           }}>
           <h3>{props.currentPopupObj.title}</h3>
           <h5>{props.currentPopupObj.address}</h5>
+          <div className="ui star rating" data-rating="3" data-max-rating="5">
+            <h5> Rating: {props.currentPopupObj.rating}</h5>
+          </div>
         </Popup> : null}
       </Map>
     </div>
