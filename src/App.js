@@ -12,7 +12,6 @@ export default class App extends React.Component {
       this.state = {
         allLocations: [],
         currentPopupObj: null,
-
       }
   }
 
@@ -21,14 +20,22 @@ componentDidMount(){
   .then(r => r.json())
   .then(locationsArray =>
     this.setState({
-      allLocations: locationsArray
+      allLocations: locationsArray,
     })
   )
 }
 
 handleHover = (e, location) => {
   console.log(location)
-  this.setState({ currentPopupObj: {location} })
+  this.setState({
+    currentPopupObj: location
+  })
+}
+
+handleUnhover = () => {
+  this.setState({
+    currentPopupObj: null
+  })
 }
 
 handleLocation = (e) => {
@@ -49,6 +56,7 @@ handleLocation = (e) => {
                       <MapContainer
                       allLocations={this.state.allLocations}
                       handleHover={this.handleHover}
+                      handleUnhover={this.handleUnhover}
                       currentPopupObj={this.state.currentPopupObj}
                       />
                     </div>
@@ -70,7 +78,7 @@ handleLocation = (e) => {
                       <MapContainer
                         allLocations={this.state.allLocations}
                         handleHover={this.handleHover}
-                        focus={this.state.focus}
+                        handleUnhover={this.handleUnhover}
                       />
                     </div>
                     <div>

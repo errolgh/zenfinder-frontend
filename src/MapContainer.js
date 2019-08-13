@@ -15,7 +15,7 @@ const MapContainer = (props) => {
     <div className="location-container">
       <Map
         style="mapbox://styles/mapbox/streets-v9"
-        center={[-77.032610, 38.898310]}
+        center={[-77.030945, 38.898310]}
         zoom={[12]}
         pitch={[8]}
         containerStyle={{
@@ -32,25 +32,32 @@ const MapContainer = (props) => {
             return   <Feature
                         key={location.id}
                         coordinates={[location.longitude, location.latitude]}
+                        onMouseLeave={()=>{props.handleUnhover()}}
                         onMouseEnter={(e)=>{props.handleHover(e, location)}}/>
                      }) : null}
         </Layer>
+        {props.currentPopupObj ?
+        <Popup
+          coordinates={[props.currentPopupObj.longitude, props.currentPopupObj.latitude]}
+          offset={{
+            'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
+          }}>
+          <h3>{props.currentPopupObj.title}</h3>
+          <h5>{props.currentPopupObj.address}</h5>
+        </Popup> : null}
       </Map>
     </div>
   )
 }
 
 export default MapContainer
-// {props.currentPopupObj ?
-  //   <Popup
-  //     coordinates={[props.currentPopupObj.lng, props.currentPopupObj.lat]}
-  //     offset={{
-    //       'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
-    //     }}
-    //     key={props.currentPopupObj.id}
-    //     className="popup">
-    //     <h3>{props.currentPopupObj.title}</h3>
-    //   </Popup> : null}
+// coordinates={[props.currentPopupObj.longitude, props.currentPopupObj.latitude]}
+// offset={{
+//   'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
+// }}
+// key={props.currentPopupObj.id}
+// className="popup">
+// <h3>{props.currentPopupObj.title}</h3>
 
 // <Popup
 // coordinates={[-77.032610, 38.898310]}
