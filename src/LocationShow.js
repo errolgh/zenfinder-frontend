@@ -10,12 +10,12 @@ export default class LocationShow extends React.Component {
         </h2>
         <div>
           <MapContainer
-          allLocations={this.props.allLocations}
-          handleHover={this.props.handleHover}
-          handleUnhover={this.props.handleUnhover}
-          currentPopupObj={this.props.currentPopupObj}
-          handleLocation={this.props.handleLocation}
-          currentLocation={this.props.currentLocation}
+            allLocations={this.props.allLocations}
+            handleHover={this.props.handleHover}
+            handleUnhover={this.props.handleUnhover}
+            currentPopupObj={this.props.currentPopupObj}
+            handleLocation={this.props.handleLocation}
+            currentLocation={this.props.currentLocation}
           />
         </div>
         <div>

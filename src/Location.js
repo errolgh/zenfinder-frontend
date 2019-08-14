@@ -13,7 +13,7 @@ export default class Location extends React.Component {
             <img src="https://cdn8.dissolve.com/p/D246_34_222/D246_34_222_1200.jpg"/>
           </div>
           <div class="content">
-            <a class="header">{this.props.location.title}</a>
+            <div class="header">{this.props.location.title}</div>
               <div class="description">
                 {this.props.location.address}
               </div>
@@ -21,11 +21,17 @@ export default class Location extends React.Component {
               <span class="date">"{this.props.location.description}"</span>
               </div>
           </div>
-          <div class="extra content">
-            <Link to={`locations${this.props.location.id}`}
-                  className="header">
-              <i class="star icon yellow"></i>
+          <div className="content">
+              <i className="star icon yellow"></i>
               {this.props.location.rating}
+          </div>
+          <div className="content">
+            <Link to={`locations/${this.props.location.id}`}
+                  className="header"
+                  onClick={(e)=>{this.props.handleLocation(e, this.props.location)}}>
+            <button className="ui button primary">
+              Details
+            </button>
             </Link>
           </div>
         </div>

@@ -53,7 +53,14 @@ handleLocation = (e, location) => {
   render(){
     return(
       <div className="App">
-      <Nav/>
+      <Nav
+        allLocations={this.state.allLocations}
+        handleHover={this.handleHover}
+        handleUnhover={this.handleUnhover}
+        currentPopupObj={this.state.currentPopupObj}
+        handleLocation={this.handleLocation}
+        currentLocation={this.state.currentLocation}
+      />
         <Header/>
           <Switch>
             <Route path='/home' render={()=>
@@ -69,6 +76,11 @@ handleLocation = (e, location) => {
           <Route path='/locations/:id' render={()=>
             <LocationShow
               currentLocation={this.state.currentLocation}
+              allLocations={this.state.allLocations}
+              handleHover={this.handleHover}
+              handleUnhover={this.handleUnhover}
+              currentPopupObj={this.state.currentPopupObj}
+              handleLocation={this.handleLocation}
             />
           }/>
           </Switch>

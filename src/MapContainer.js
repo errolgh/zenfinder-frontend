@@ -10,7 +10,6 @@ const Map = ReactMapboxGl({
 // const MapContainer = ({ lat, long, sprite, locations }) => {
 //deconstruction - so you don't need to use 'props.' explicitly
 const MapContainer = (props) => {
-  debugger
   console.log(props.allLocations)
   return (
     <div className="location-container">
