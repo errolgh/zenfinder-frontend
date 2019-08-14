@@ -7,17 +7,41 @@ export default class Location extends React.Component {
   }
   render(){
     return(
-      <div
-        className="ui middle aligned divided list"
-        onClick={(e)=>{this.props.handleLocation(e, this.props.location)}}
-      >
-        <div className="ui card">
-          <img className="ui avatar image" src="/images/avatar/small/daniel.jpg"/>
-          <div className="content">
-            <Link to={`/locations/${this.props.location.id}`} className="header">{this.props.location.title}</Link>
+      <React.Fragment>
+        <div class="ui centered card">
+          <div class="image">
+            <img src="https://cdn8.dissolve.com/p/D246_34_222/D246_34_222_1200.jpg"/>
+          </div>
+          <div class="content">
+            <a class="header">{this.props.location.title}</a>
+              <div class="description">
+                {this.props.location.address}
+              </div>
+              <div class="meta">
+              <span class="date">"{this.props.location.description}"</span>
+              </div>
+          </div>
+          <div class="extra content">
+            <Link to={`locations${this.props.location.id}`}
+                  className="header">
+              <i class="star icon yellow"></i>
+              {this.props.location.rating}
+            </Link>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }
+
+
+// <div className="ui"
+// onClick={(e)=>{this.props.handleLocation(e, this.props.location)}}>
+// <div className="ui centered card">
+// <h3>{this.props.location.title}</h3>
+// <img src="https://cdn8.dissolve.com/p/D246_34_222/D246_34_222_1200.jpg"/>
+// <div className="content">
+// <Link to={`/locations/${this.props.location.id}`} className="header"><button className="ui button primary">Details</button></Link>
+// </div>
+// </div>
+// </div>
