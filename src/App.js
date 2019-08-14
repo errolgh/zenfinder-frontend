@@ -5,14 +5,16 @@ import Location from './Location'
 import LocationShow from './LocationShow'
 import Nav from './Nav'
 import Home from './Home'
-import { Router, Route, Switch } from 'react-router-dom'
+import { Router, Route, Switch, Link } from 'react-router-dom'
 
 export default class App extends React.Component {
   constructor(){
     super()
       this.state = {
+        currentUser: null,
         allLocations: [],
         currentPopupObj: null,
+        // currentZoom: [12],
         currentLocation: {
           latitude: 38.896138,
           longitude: -77.033255
@@ -45,7 +47,8 @@ handleUnhover = () => {
 
 handleLocation = (e, location) => {
   this.setState({
-    currentLocation: location
+    currentLocation: location,
+    // currentZoom: [18]
   })
   console.log("clicky")
 }
@@ -82,6 +85,17 @@ handleLocation = (e, location) => {
               currentPopupObj={this.state.currentPopupObj}
               handleLocation={this.handleLocation}
             />
+          }/>
+          <Route path='/' render={()=>
+            <div>
+              <h1>404 :(</h1>
+              <h2>Page Not Found</h2>
+              <Link to='/home'>
+                <button className="ui button red">
+                  Home
+                </button>
+              </Link>
+            </div>
           }/>
           </Switch>
       </div>

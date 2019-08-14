@@ -69,15 +69,14 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 # zenfinder-frontend
 
 
-8/13/19
 - today's goals:
   finish skateboard activeRecord models,
-  get seed locations to show up on map component,
-  figure out how to connect locationContainer data with Map Features,
+  keep doing routes,
 
-- tomorrow's goals:
-  figure out postgreSQL gui,
-  routes,
+  <!-- get seed locations to show up on map component,
+  figure out how to connect locationContainer data with Map Features, -->
+
+- figure out postgreSQL gui,
 
 - hover tooltip and onClick for feature should be coded as two different features
 
@@ -85,16 +84,58 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
-
+#notes...
 -activeStyle attribute for NavLink if possible! may not working semantic UI
 -may have to give the rating node a classname of "item" to show up in the popup
--continue to work with activerecord
 
-- wrap everything in a router, implement route control flow, and switch if you want, then create link tos where needed
-
-props.match.params.id
+props.match.params.id?
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+***skateboard assessment***
+- scope of assessment
+
+- fix some hardcoding/unintentional persisting
+
+<!-- - orientation/implementing postgreSQL? -->
+
+- should i still use mod 3 cat cafe lecture to set up serialization for my API?
+yes
+
+- user authentication
+
+#order of implementation
+- complete serialized backend
+- create a user log in
+- fake auth
 
 
 

@@ -16,6 +16,7 @@ export default class LocationShow extends React.Component {
             currentPopupObj={this.props.currentPopupObj}
             handleLocation={this.props.handleLocation}
             currentLocation={this.props.currentLocation}
+            // currentZoom={this.state.currentZoom}
           />
         </div>
         <div>
