@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 import Header from './Header'
-import MapContainer from './MapContainer'
-import LocationContainer from './LocationContainer'
+import Location from './Location'
+import LocationShow from './LocationShow'
 import Nav from './Nav'
-import { Route, Switch } from 'react-router-dom'
+import Home from './Home'
+import { Router, Route, Switch } from 'react-router-dom'
 
 export default class App extends React.Component {
   constructor(){
@@ -12,6 +13,10 @@ export default class App extends React.Component {
       this.state = {
         allLocations: [],
         currentPopupObj: null,
+        currentLocation: {
+          latitude: 38.896138,
+          longitude: -77.033255
+        }
       }
   }
 
@@ -38,7 +43,10 @@ handleUnhover = () => {
   })
 }
 
-handleLocation = (e) => {
+handleLocation = (e, location) => {
+  this.setState({
+    currentLocation: location
+  })
   console.log("clicky")
 }
 
@@ -48,49 +56,21 @@ handleLocation = (e) => {
       <Nav/>
         <Header/>
           <Switch>
-            <Route path={`/`} render={()=> {
-              return(
-                <div className="ui two column grid col-height">
-                  <div className= "row">
-                    <div>
-                      <MapContainer
-                      allLocations={this.state.allLocations}
-                      handleHover={this.handleHover}
-                      handleUnhover={this.handleUnhover}
-                      currentPopupObj={this.state.currentPopupObj}
-                      />
-                    </div>
-                    <div>
-                      <LocationContainer
-                        allLocations={this.state.allLocations}
-                        handleLocation={this.handleLocation}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
+            <Route path='/home' render={()=>
+              <Home
+                allLocations={this.state.allLocations}
+                handleHover={this.handleHover}
+                handleUnhover={this.handleUnhover}
+                currentPopupObj={this.state.currentPopupObj}
+                handleLocation={this.handleLocation}
+                currentLocation={this.state.currentLocation}
+              />
             }/>
-            <Route path={`/locations`} render={()=> {
-              return(
-                <div className="ui two column grid col-height ">
-                  <div className= "row">
-                    <div>
-                      <MapContainer
-                        allLocations={this.state.allLocations}
-                        handleHover={this.handleHover}
-                        handleUnhover={this.handleUnhover}
-                      />
-                    </div>
-                    <div>
-                      <LocationContainer
-                        allLocations={this.state.allLocations}
-                        handleLocation={this.handleLocation}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-            }/>
+          <Route path='/locations/:id' render={()=>
+            <LocationShow
+              currentLocation={this.state.currentLocation}
+            />
+          }/>
           </Switch>
       </div>
     )

@@ -92,7 +92,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 - wrap everything in a router, implement route control flow, and switch if you want, then create link tos where needed
 
-
+props.match.params.id
 
 
 

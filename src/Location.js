@@ -9,7 +9,7 @@ export default class Location extends React.Component {
     return(
       <div
         className="ui middle aligned divided list"
-        onClick={()=>{this.props.handleLocation()}}
+        onClick={(e)=>{this.props.handleLocation(e, this.props.location)}}
       >
         <div className="ui card">
           <img className="ui avatar image" src="/images/avatar/small/daniel.jpg"/>
