@@ -6,6 +6,7 @@ export default class Location extends React.Component {
     super(props)
   }
   render(){
+    console.log(this.props)
     return(
       <React.Fragment>
         <div class="ui centered card">

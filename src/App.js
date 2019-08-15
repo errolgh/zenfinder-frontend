@@ -25,10 +25,11 @@ export default class App extends React.Component {
 componentDidMount(){
   fetch(`http://localhost:3001/locations`)
   .then(r => r.json())
-  .then(locationsArray =>
+  .then(locationsArray =>  {
+    console.log(locationsArray)
     this.setState({
       allLocations: locationsArray,
-    })
+    })}
   )
 }
 
@@ -48,8 +49,8 @@ handleUnhover = () => {
 handleLocation = (e, location) => {
   this.setState({
     currentLocation: location,
-    // currentZoom: [18]
-  })
+    currentPopupObj: location,
+    })
   console.log("clicky")
 }
 
@@ -78,8 +79,8 @@ handleLocation = (e, location) => {
             }/>
           <Route path='/locations/:id' render={()=>
             <LocationShow
-              currentLocation={this.state.currentLocation}
               allLocations={this.state.allLocations}
+              currentLocation={this.state.currentLocation}
               handleHover={this.handleHover}
               handleUnhover={this.handleUnhover}
               currentPopupObj={this.state.currentPopupObj}

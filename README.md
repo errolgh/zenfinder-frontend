@@ -92,26 +92,8 @@ props.match.params.id?
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*next steps*
+reviews/:id
 
 
 
@@ -125,19 +107,20 @@ props.match.params.id?
 
 - fix some hardcoding/unintentional persisting
 
-<!-- - orientation/implementing postgreSQL? -->
-
-- should i still use mod 3 cat cafe lecture to set up serialization for my API?
-yes
-
 - user authentication
 
 #order of implementation
-- complete serialized backend
+<!-- - complete serialized backend -->
 - create a user log in
 - fake auth
 
 
 
 
-#
+###
+Backend Bugs
+###
+
+###
+Frontend Bugs
+###
