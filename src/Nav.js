@@ -11,13 +11,28 @@ export default class Nav extends React.Component {
           Home
         </Link>
         <div className="right menu">
-          <div className="item">
-            <Link to='/login' component={Login}>
-              <div
-                className="ui primary button">
-                  Login
-              </div>
-            </Link>
+          {localStorage.getItem('user') ? (
+            <div className="item">
+              <Link
+                to='/home'
+                onClick={this.props.clearUserData}
+              >
+                <div
+                  className="ui primary button">
+                    Logout
+                </div>
+              </Link>
+            </div> ) : (
+            <div className="item">
+              <Link to='/login'>
+                <div
+                  className="ui primary button">
+                    Login
+                </div>
+              </Link>
+            </div>
+          )
+          }
           </div>
           <div className="item">
             <Link to='/profile' component={Profile}>
@@ -28,7 +43,7 @@ export default class Nav extends React.Component {
             </Link>
           </div>
         </div>
-      </div>
+      // </div>
     )
   }
 }

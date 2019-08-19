@@ -21,7 +21,7 @@ export default class Home extends React.Component {
             <LocationContainer
               allLocations={this.props.allLocations}
               handleLocation={this.props.handleLocation}
-            />
+            /> 
           </div>
         </div>
       </div>

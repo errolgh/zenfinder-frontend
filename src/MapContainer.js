@@ -27,6 +27,11 @@ const MapContainer = (props) => {
           type="symbol"
           id="marker"
           layout={{ 'icon-image': 'star-15' }}>
+        
+
+
+
+
 
           {props.allLocations !== undefined ? props.allLocations.map ((location) => {
             return   <Feature

@@ -15,7 +15,7 @@ export default class Review extends React.Component {
                 {this.props.review.description}
               </div>
               <div class="meta">
-              <span class="date">"{this.props.review.user.user_name}"</span>
+              <span class="date">"{this.props.review.user_name}"</span>
               </div>
           </div>
           <div className="content">
@@ -23,9 +23,8 @@ export default class Review extends React.Component {
               {this.props.review.rating}
           </div>
           <div className="content">
-            <Link to={`/home`}
-                  className="header"
-                  onClick={(e)=>{this.props.handleLocation(e, this.props.location)}}>
+            <Link to='/home'
+                  className="header">
             <button className="ui button primary">
               Details
             </button>

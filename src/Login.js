@@ -24,17 +24,24 @@ handlePasswordChange = event => {
 }
 
 handleSubmit = event => {
+  event.preventDefault()
   console.log("submitting form:", event)
   fetch('http://localhost:3001/login', {
   	method: "POST",
   	headers: { 'Content-Type': 'application/json' },
   	body: JSON.stringify({
-  		user_name: "paul",
-  		password: "password"
+  		user_name: this.state.userName,
+  		password: this.state.password
     })
   })
     .then(res => res.json())
-    .then(userHash => console.log(userHash))
+    .then(data => {
+      if (data.authenticated) {
+        this.props.passUserData(data)
+      } else {
+        alert("incorrect username or password")
+      }
+    })
 
 }
 
@@ -42,7 +49,7 @@ handleSubmit = event => {
     return(
     <div>
       <form className="ui massive form"
-            OnSubmit={()=>this.handleSubmit(window.event)}>
+            onSubmit={this.handleSubmit}>
         <div className="two fields">
           <div className="field">
             <label>Username</label>
@@ -51,7 +58,7 @@ handleSubmit = event => {
               name="userName"
               value={this.state.userName}
               placeholder="Username"
-              onChange={()=> this.handleUserNameChange(window.event)}
+              onChange={this.handleUserNameChange}
             />
             </div>
             <div className="field">
@@ -61,29 +68,17 @@ handleSubmit = event => {
                name="password"
                value={this.state.password}
                placeholder="Password"
-               onChange={()=> this.handlePasswordChange(window.event)}
+               onChange={this.handlePasswordChange}
               />
               </div>
             </div>
-            <Link to='/home' component={Home}>
-              <button className="ui submit massive button teal">
+
+              <button type="submit" className="ui submit massive button teal">
                 Submit
               </button>
-            </Link>
+
       </form>
     </div>
     )
   }
 }
-
-
-// fetch('http://localhost:3001/login', {
-// 	method: "POST",
-// 	headers: {
-// 	'Content-Type': 'application/json'
-//    },
-// 	body: JSON.stringify({
-// 		user_name: "",
-// 		password: ""
-//   })
-// })

@@ -7,13 +7,14 @@ import Nav from './Nav'
 import Home from './Home'
 import Login from './Login'
 import Profile from './Profile'
-import { Router, Route, Switch, Link } from 'react-router-dom'
+import { Router, Route, Switch, Link, Redirect} from 'react-router-dom'
+import { withRouter } from 'react-router'
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(){
     super()
       this.state = {
-        user: null,
+        currentUser: null,
         allLocations: [],
         currentPopupObj: null,
         currentLocation: {
@@ -27,15 +28,33 @@ componentDidMount(){
   fetch(`http://localhost:3001/locations`)
   .then(r => r.json())
   .then(locationsArray =>  {
-    console.log(locationsArray)
+    // console.log(locationsArray)
     this.setState({
       allLocations: locationsArray,
     })}
   )
 }
 
+passUserData = (currentUser) => {
+  console.log("we are in passUserData: ", currentUser)
+  this.setState({
+    currentUser
+  })
+  localStorage.setItem(
+    "user", currentUser.user.id
+  )
+  this.props.history.push('/profile')
+}
+
+clearUserData = () => {
+  this.setState({
+    currentUser: null
+  })
+  localStorage.clear()
+}
+
 handleHover = (e, location) => {
-  console.log(location)
+  // console.log(location)
   this.setState({
     currentPopupObj: location
   })
@@ -65,6 +84,8 @@ handleLocation = (e, location) => {
         currentPopupObj={this.state.currentPopupObj}
         handleLocation={this.handleLocation}
         currentLocation={this.state.currentLocation}
+        clearUserData={this.clearUserData}
+        user={this.state.currentUser}
       />
         <Header/>
           <Switch>
@@ -76,8 +97,11 @@ handleLocation = (e, location) => {
                 currentPopupObj={this.state.currentPopupObj}
                 handleLocation={this.handleLocation}
                 currentLocation={this.state.currentLocation}
+                user={this.state.currentUser}
+
               />
             }/>
+            {/* {this.state.currentUser ?*/}
           <Route path='/locations/:id' render={()=>
             <LocationShow
               allLocations={this.state.allLocations}
@@ -86,12 +110,27 @@ handleLocation = (e, location) => {
               handleUnhover={this.handleUnhover}
               currentPopupObj={this.state.currentPopupObj}
               handleLocation={this.handleLocation}
+              user={this.state.currentUser}
+
             />
           }/>
+          {/* : null}*/}
             <Route path="/login" render={()=>
-              <Login/>
+              localStorage.getItem('user') ? <Redirect to='/profile' /> :
+              <Login
+                passUserData={this.passUserData}
+              />
             }/>
-            <Route path='/profile' component={Profile}/>
+            <Route path='/profile'
+                   render={()=>
+                    localStorage.getItem('user') ?
+                    (<Profile
+                      user={this.state.currentUser}
+                    />) :
+                    (<Redirect to='/login'/>
+                  )}
+              user={this.state.currentUser}
+            />
             <Route path='/' render={()=>
               <div>
                 <h1>404 :(</h1>
@@ -108,3 +147,5 @@ handleLocation = (e, location) => {
     )
   }
 }
+
+export default withRouter(App)
