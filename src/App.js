@@ -9,6 +9,7 @@ import Login from './Login'
 import Profile from './Profile'
 import ReviewForm from './ReviewForm'
 import { Route, Switch, Link, Redirect} from 'react-router-dom'
+import ReviewShow from './ReviewShow'
 import { withRouter } from 'react-router'
 
 class App extends React.Component {
@@ -120,14 +121,10 @@ handleLocation = (e, location) => {
                 <ReviewForm
                   currentLocation={this.state.currentLocation}
                   user={this.state.currentUser}
+                  history={this.props.history}
                 />
               }/>
-
-
-
-
-
-
+              <Route path='/reviews/:id'component={ReviewShow}/>
               <Route path="/login" render={()=>
                 localStorage.getItem('user') ? <Redirect to='/profile' /> :
                 <Login

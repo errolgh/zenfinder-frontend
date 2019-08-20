@@ -35,7 +35,7 @@ export default class Nav extends React.Component {
           }
           </div>
           <div className="item">
-            <Link to='/profile' component={Profile}>
+            <Link to='/profile'>
               <div
                 className="ui primary button">
                   Profile

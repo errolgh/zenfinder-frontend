@@ -23,10 +23,6 @@ export default class ReviewForm extends React.Component {
         currentLocation: this.props.currentLocation
       })
     })
-
-    // fetch(`http://localhost:3001/locations/${locationId}`)
-    // .then(r => r.json())
-    // .then(locationObj => console.log(location))
   }
 
   handleReviewSubmit = (event) => {
@@ -46,15 +42,12 @@ export default class ReviewForm extends React.Component {
     })
     .then(r => r.json())
     .then(reviewObj =>
-      console.log("new review! ",reviewObj)
+      this.props.history.push(`/reviews/${reviewObj.id}`)
     )
   }
 
-  // handlePageRender = () => {
-  //   return <ReviewShow
-  //     review={reviewObj}
-  //   />
-  // }
+  handleRedirect = reviewObj => {
+  }
 
   handleTitleChange = (event) => {
     this.setState({
@@ -74,7 +67,9 @@ export default class ReviewForm extends React.Component {
     })
   }
 
+  // {reviewObj ? <Route to={`/reviews/${reviewObj.id}`}/> : null}
   render(){
+    console.log(this.props)
     return(
       <div>
         <div>
@@ -119,6 +114,7 @@ export default class ReviewForm extends React.Component {
             <option value={4}>4</option>
             <option value={5}>5</option>
           </select>
+
           <button className='ui button huge primary teal'>
             Submit your experience
           </button>
