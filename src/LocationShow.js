@@ -34,6 +34,7 @@ class LocationShow extends React.Component {
         {this.state.currentLocation ? (
           <MapContainer
             handleHover={this.props.handleHover}
+            currentCenter={this.props.currentCenter}
             handleUnhover={this.props.handleUnhover}
             currentPopupObj={this.props.currentPopupObj}
             handleLocation={this.props.handleLocation}
@@ -42,7 +43,9 @@ class LocationShow extends React.Component {
         </div>
         <div>
         <div>
-        <Link to='/reviews/new'>
+        <Link to='/reviews/new'
+          currentLocation={this.props.currentLocation}
+        >
           <button
             className="ui button huge primary">
             Review this Location

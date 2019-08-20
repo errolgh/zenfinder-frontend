@@ -1,8 +1,10 @@
 import React from 'react'
+import { Route, Redirect } from 'react-router-dom'
 
 export default class ReviewForm extends React.Component {
 
   state = {
+    currentLocation: null,
     currentUser: null,
     currentTitle: "",
     currentDescription: "",
@@ -17,12 +19,19 @@ export default class ReviewForm extends React.Component {
     .then(r => r.json())
     .then(userObj => {
       this.setState({
-        currentUser: userObj
+        currentUser: userObj,
+        currentLocation: this.props.currentLocation
       })
     })
+
+    // fetch(`http://localhost:3001/locations/${locationId}`)
+    // .then(r => r.json())
+    // .then(locationObj => console.log(location))
   }
 
-  handleReviewSubmit = () => {
+  handleReviewSubmit = (event) => {
+    //needed in production????
+    event.preventDefault()
     console.log("attempting to submit review...")
     fetch(`http://localhost:3001/reviews`, {
       method: "POST",
@@ -31,10 +40,21 @@ export default class ReviewForm extends React.Component {
         title: this.state.currentTitle,
         description: this.state.currentDescription,
         rating: this.state.currentRating,
-        user_id: this.state.currentUser
+        user_id: this.state.currentUser.id,
+        location_id: this.state.currentLocation.id
       })
     })
+    .then(r => r.json())
+    .then(reviewObj =>
+      console.log("new review! ",reviewObj)
+    )
   }
+
+  // handlePageRender = () => {
+  //   return <ReviewShow
+  //     review={reviewObj}
+  //   />
+  // }
 
   handleTitleChange = (event) => {
     this.setState({

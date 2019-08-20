@@ -15,13 +15,15 @@ export default class Home extends React.Component {
             currentPopupObj={this.props.currentPopupObj}
             handleLocation={this.props.handleLocation}
             currentLocation={this.props.currentLocation}
+            currentCenter={this.props.currentCenter}
             />
           </div>
           <div className="row">
             <LocationContainer
               allLocations={this.props.allLocations}
+              currentCenter={this.props.currentCenter}
               handleLocation={this.props.handleLocation}
-            /> 
+            />
           </div>
         </div>
       </div>

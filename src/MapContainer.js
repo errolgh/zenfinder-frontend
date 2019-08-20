@@ -17,7 +17,7 @@ const MapContainer = (props) => {
     <div className="location-container">
       <Map
         style="mapbox://styles/mapbox/streets-v9"
-        center={[props.currentLocation.longitude, props.currentLocation.latitude]}
+        center={[props.currentCenter.longitude, props.currentCenter.latitude]}
         zoom={[12]}
         pitch={[12]}
         containerStyle={{
@@ -32,7 +32,7 @@ const MapContainer = (props) => {
           {props.match.path === "/locations/:id" ?
             (<Feature
               key={props.currentLocation.id}
-              coordinates={[props.currentLocation.longitude, props.currentLocation.latitude]}
+              coordinates={[props.currentCenter.longitude, props.currentCenter.latitude]}
               onMouseLeave={()=>{props.handleUnhover()}}
               onMouseEnter={(e)=>{props.handleHover(e, props.currentLocation)}}/>)
               :
