@@ -7,6 +7,7 @@ import Nav from './Nav'
 import Home from './Home'
 import Login from './Login'
 import Profile from './Profile'
+import ReviewForm from './ReviewForm'
 import { Router, Route, Switch, Link, Redirect} from 'react-router-dom'
 import { withRouter } from 'react-router'
 
@@ -77,16 +78,16 @@ handleLocation = (e, location) => {
   render(){
     return(
       <div className="App">
-      <Nav
-        allLocations={this.state.allLocations}
-        handleHover={this.handleHover}
-        handleUnhover={this.handleUnhover}
-        currentPopupObj={this.state.currentPopupObj}
-        handleLocation={this.handleLocation}
-        currentLocation={this.state.currentLocation}
-        clearUserData={this.clearUserData}
-        user={this.state.currentUser}
-      />
+        <Nav
+          allLocations={this.state.allLocations}
+          handleHover={this.handleHover}
+          handleUnhover={this.handleUnhover}
+          currentPopupObj={this.state.currentPopupObj}
+          handleLocation={this.handleLocation}
+          currentLocation={this.state.currentLocation}
+          clearUserData={this.clearUserData}
+          user={this.state.currentUser}
+        />
         <Header/>
           <Switch>
             <Route path='/home' render={()=>
@@ -101,47 +102,56 @@ handleLocation = (e, location) => {
 
               />
             }/>
-            {/* {this.state.currentUser ?*/}
-          <Route path='/locations/:id' render={()=>
-            <LocationShow
-              allLocations={this.state.allLocations}
-              currentLocation={this.state.currentLocation}
-              handleHover={this.handleHover}
-              handleUnhover={this.handleUnhover}
-              currentPopupObj={this.state.currentPopupObj}
-              handleLocation={this.handleLocation}
-              user={this.state.currentUser}
-
-            />
-          }/>
-          {/* : null}*/}
-            <Route path="/login" render={()=>
-              localStorage.getItem('user') ? <Redirect to='/profile' /> :
-              <Login
-                passUserData={this.passUserData}
+            <Route path='/locations/:id' render={()=>
+              <LocationShow
+                allLocations={this.state.allLocations}
+                currentLocation={this.state.currentLocation}
+                handleHover={this.handleHover}
+                handleUnhover={this.handleUnhover}
+                currentPopupObj={this.state.currentPopupObj}
+                handleLocation={this.handleLocation}
+                user={this.state.currentUser}
               />
             }/>
-            <Route path='/profile'
-                   render={()=>
-                    localStorage.getItem('user') ?
-                    (<Profile
-                      user={this.state.currentUser}
-                    />) :
-                    (<Redirect to='/login'/>
-                  )}
-              user={this.state.currentUser}
-            />
-            <Route path='/' render={()=>
-              <div>
-                <h1>404 :(</h1>
-                <h2>Page Not Found</h2>
-                <Link to='/home'>
-                  <button className="ui button red">
-                    Home
-                  </button>
-                </Link>
-              </div>
-            }/>
+              <Route path='/reviews/new' render={() =>
+                <ReviewForm
+                  currentLocation={this.state.currentLocation}
+                  user={this.state.currentUser}
+                />
+              }/>
+
+
+
+
+
+
+              <Route path="/login" render={()=>
+                localStorage.getItem('user') ? <Redirect to='/profile' /> :
+                <Login
+                  passUserData={this.passUserData}
+                />
+              }/>
+              <Route path='/profile'
+                     render={()=>
+                      localStorage.getItem('user') ?
+                      (<Profile
+                        user={this.state.currentUser}
+                      />) :
+                      (<Redirect to='/login'/>
+                    )}
+                user={this.state.currentUser}
+              />
+              <Route path='/' render={()=>
+                <div>
+                  <h1>404 :(</h1>
+                  <h2>Page Not Found</h2>
+                  <Link to='/home'>
+                    <button className="ui button red">
+                      Home
+                    </button>
+                  </Link>
+                </div>
+              }/>
           </Switch>
       </div>
     )

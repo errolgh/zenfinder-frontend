@@ -2,6 +2,7 @@ import React from 'react'
 import MapContainer from './MapContainer'
 import Location from './Location'
 import Review from "./Review"
+import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 class LocationShow extends React.Component {
@@ -12,18 +13,6 @@ class LocationShow extends React.Component {
   }
 
   componentDidMount(){
-
-    // let userId = localStorage.getItem('user')
-    // console.log(userId)
-    // fetch(`http://localhost:3001/users/${userId}`)
-    // .then(r => r.json())
-    // .then(userObj => {
-    //   console.log("we are in componentDidMount")
-    //   this.setState({
-    //     currentUser: userObj
-    //   })
-    // })
-
     fetch(`http://localhost:3001${this.props.location.pathname}`)
     .then(r => r.json())
     .then(locationObj => {
@@ -53,7 +42,12 @@ class LocationShow extends React.Component {
         </div>
         <div>
         <div>
-        <button className="ui button huge primary">Review this Location</button>
+        <Link to='/reviews/new'>
+          <button
+            className="ui button huge primary">
+            Review this Location
+          </button>
+        </Link>
         </div>
         {this.state.currentLocation ? (
 
