@@ -70,12 +70,12 @@ class LocationShow extends React.Component {
 
                   this.state.currentLocation.reviews.map((review) => {
                     return <Review
-                    currentLocation={this.state.currentLocation}
-                    handleHover={this.props.handleHover}
-                    handleUnhover={this.props.handleUnhover}
-                    currentPopupObj={this.props.currentPopupObj}
-                    handleLocation={this.props.handleLocation}
-                    review={review}
+                      currentLocation={this.state.currentLocation}
+                      handleHover={this.props.handleHover}
+                      handleUnhover={this.props.handleUnhover}
+                      currentPopupObj={this.props.currentPopupObj}
+                      handleLocation={this.props.handleLocation}
+                      review={review}
                     />
                   })
                 ) : null}

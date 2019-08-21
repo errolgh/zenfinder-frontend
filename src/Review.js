@@ -28,8 +28,7 @@ export default class Review extends React.Component {
  // && this.state.currentLocation
   render(){
     // console.log(this.props.review)
-    console.log("review consolelog: ")
-    return(
+        return(
       <React.Fragment>
       {this.state.currentReview ? (
           <div class="ui centered card">
@@ -42,7 +41,7 @@ export default class Review extends React.Component {
                   "{this.props.review.description}"
                 </div>
                 <div class="meta">
-                <span class="date"> - {this.props.review.id}</span>
+                <span class="date"> - {this.props.review.user.user_name}</span>
                 </div>
             </div>
             <div className="content">
