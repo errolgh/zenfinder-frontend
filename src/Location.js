@@ -6,7 +6,7 @@ export default class Location extends React.Component {
     super(props)
   }
   render(){
-    console.log(this.props)
+    console.log("props:", this.props)
     return(
       <React.Fragment>
         <div class="ui centered card">
@@ -24,7 +24,7 @@ export default class Location extends React.Component {
           </div>
           <div className="content">
               <i className="star icon yellow"></i>
-              {this.props.location.rating}
+              {this.props.location.average_rating.average_review}
           </div>
           <div className="content">
             <Link to={`locations/${this.props.location.id}`}

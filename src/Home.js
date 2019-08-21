@@ -16,6 +16,7 @@ export default class Home extends React.Component {
             handleLocation={this.props.handleLocation}
             currentLocation={this.props.currentLocation}
             currentCenter={this.props.currentCenter}
+            // currentZoom={this.props.currentZoom}
             />
           </div>
           <div className="row">

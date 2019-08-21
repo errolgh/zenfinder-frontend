@@ -13,6 +13,7 @@ const Map = ReactMapboxGl({
 const MapContainer = (props) => {
   console.log(props.allLocations)
   console.log(props)
+
   return (
     <div className="location-container">
       <Map
@@ -53,7 +54,7 @@ const MapContainer = (props) => {
           <h3>{props.currentPopupObj.title}</h3>
           <h5>{props.currentPopupObj.address}</h5>
           <div className="ui star rating" data-rating="3" data-max-rating="5">
-            <h5> Rating: {props.currentPopupObj.rating}</h5>
+            <h5> Rating: {props.currentLocation.average_rating.average_review}</h5>
           </div>
         </Popup> : null}
       </Map>
@@ -62,20 +63,3 @@ const MapContainer = (props) => {
 }
 
 export default withRouter(MapContainer)
-
-
-
-// coordinates={[props.currentPopupObj.longitude, props.currentPopupObj.latitude]}
-// offset={{
-//   'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
-// }}
-// key={props.currentPopupObj.id}
-// className="popup">
-// <h3>{props.currentPopupObj.title}</h3>
-
-// <Popup
-// coordinates={[-77.032610, 38.898310]}
-// >
-// <h1>Popup</h1>
-// </Popup>
-// <Feature coordinates={[-77.032610, 38.898310]}/>

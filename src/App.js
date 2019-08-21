@@ -10,6 +10,7 @@ import Profile from './Profile'
 import ReviewForm from './ReviewForm'
 import { Route, Switch, Link, Redirect} from 'react-router-dom'
 import ReviewShow from './ReviewShow'
+import LocationForm from './LocationForm'
 import { withRouter } from 'react-router'
 
 class App extends React.Component {
@@ -17,9 +18,9 @@ class App extends React.Component {
     super()
       this.state = {
         currentUser: null,
+        currentZoom: [12],
         allLocations: [],
         currentPopupObj: null,
-        // currentLocation: null,
         currentCenter: {
           latitude: 38.896138,
           longitude: -77.033255
@@ -31,7 +32,6 @@ componentDidMount(){
   fetch(`http://localhost:3001/locations`)
   .then(r => r.json())
   .then(locationsArray =>  {
-    // console.log(locationsArray)
     this.setState({
       allLocations: locationsArray,
     })}
@@ -57,7 +57,6 @@ clearUserData = () => {
 }
 
 handleHover = (e, location) => {
-  // console.log(location)
   this.setState({
     currentPopupObj: location
   })
@@ -102,9 +101,16 @@ handleLocation = (e, location) => {
                 currentCenter={this.state.currentCenter}
                 currentLocation={this.state.currentLocation}
                 user={this.state.currentUser}
+                currentZoom={this.state.currentZoom}
 
               />
             }/>
+            <Route
+              path='/locations/new' render={()=>
+                <LocationForm
+                currentCenter={this.state.currentCenter}
+              />}
+            />
             <Route path='/locations/:id' render={()=>
               <LocationShow
                 allLocations={this.state.allLocations}

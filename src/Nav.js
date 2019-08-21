@@ -4,12 +4,20 @@ import Profile from './Profile'
 import { Link } from 'react-router-dom'
 
 export default class Nav extends React.Component {
+
   render(){
     return(
       <div className="ui inverted large menu black">
         <Link to='/home' className="active item">
           Home
         </Link>
+        {localStorage.getItem('user')? (
+          <div className="item">
+          <Link to='/locations/new'>
+          <div><i class="plus icon"></i>Location</div>
+          </Link>
+          </div>
+        ) : null}
         <div className="right menu">
           {localStorage.getItem('user') ? (
             <div className="item">
@@ -34,14 +42,16 @@ export default class Nav extends React.Component {
           )
           }
           </div>
-          <div className="item">
+          {localStorage.getItem('user')? (
+            <div className="item">
             <Link to='/profile'>
-              <div
-                className="ui primary button">
-                  Profile
-              </div>
+            <div
+              className="ui primary">
+              <i class="user large blue circle icon"></i>
+            </div>
             </Link>
-          </div>
+            </div>
+          ) : null}
         </div>
       // </div>
     )

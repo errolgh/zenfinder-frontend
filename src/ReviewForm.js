@@ -26,7 +26,6 @@ export default class ReviewForm extends React.Component {
   }
 
   handleReviewSubmit = (event) => {
-    //needed in production????
     event.preventDefault()
     console.log("attempting to submit review...")
     fetch(`http://localhost:3001/reviews`, {
@@ -44,9 +43,6 @@ export default class ReviewForm extends React.Component {
     .then(reviewObj =>
       this.props.history.push(`/reviews/${reviewObj.id}`)
     )
-  }
-
-  handleRedirect = reviewObj => {
   }
 
   handleTitleChange = (event) => {
@@ -67,7 +63,6 @@ export default class ReviewForm extends React.Component {
     })
   }
 
-  // {reviewObj ? <Route to={`/reviews/${reviewObj.id}`}/> : null}
   render(){
     console.log(this.props)
     return(

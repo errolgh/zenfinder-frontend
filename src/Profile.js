@@ -35,6 +35,12 @@ export default class Profile extends React.Component {
               <h2>
                 {this.state.currentUser.bio}
               </h2>
+              <h2>
+              <h3>Your Activities:</h3>
+                {this.state.currentUser.activities.map(activity => {
+                  return <div>{activity.title}</div>
+                })}
+              </h2>
             </div>
             <div>
               <div className="ui row">

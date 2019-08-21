@@ -29,7 +29,7 @@ class LocationShow extends React.Component {
         {this.state.currentLocation ? (
           <div>
             <h2>
-              {this.state.currentLocation.title}
+              {this.state.currentLocation.title}  ( {this.state.currentLocation.average_rating.average_review}<i className="star icon yellow"></i><span>)</span>
             </h2>
             <div className="ui two column grid col-height">
               <div>
@@ -57,18 +57,28 @@ class LocationShow extends React.Component {
               </div>
               {this.state.currentLocation ? (
 
-                this.state.currentLocation.reviews.map((review) => {
-                  return <Review
-                  currentLocation={this.state.currentLocation}
-                  handleHover={this.props.handleHover}
-                  handleUnhover={this.props.handleUnhover}
-                  currentPopupObj={this.props.currentPopupObj}
-                  handleLocation={this.props.handleLocation}
-                  review={review}
-                  />
-                })
-              ) : null
-              }
+
+
+
+                this.state.currentLocation.reviews.length < 1 ? (
+                   (<h3>Be the first to review this location!</h3>
+
+                ) : null) :
+
+
+
+
+                  this.state.currentLocation.reviews.map((review) => {
+                    return <Review
+                    currentLocation={this.state.currentLocation}
+                    handleHover={this.props.handleHover}
+                    handleUnhover={this.props.handleUnhover}
+                    currentPopupObj={this.props.currentPopupObj}
+                    handleLocation={this.props.handleLocation}
+                    review={review}
+                    />
+                  })
+                ) : null}
               </div>
             </div>
           </div>) : null}
