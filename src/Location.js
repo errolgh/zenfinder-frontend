@@ -5,6 +5,7 @@ export default class Location extends React.Component {
   constructor(props){
     super(props)
   }
+
   render(){
     console.log("props:", this.props)
     return(
@@ -40,15 +41,3 @@ export default class Location extends React.Component {
     )
   }
 }
-
-
-// <div className="ui"
-// onClick={(e)=>{this.props.handleLocation(e, this.props.location)}}>
-// <div className="ui centered card">
-// <h3>{this.props.location.title}</h3>
-// <img src="https://cdn8.dissolve.com/p/D246_34_222/D246_34_222_1200.jpg"/>
-// <div className="content">
-// <Link to={`/locations/${this.props.location.id}`} className="header"><button className="ui button primary">Details</button></Link>
-// </div>
-// </div>
-// </div>

@@ -3,16 +3,14 @@ import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl'
 import { withRouter } from 'react-router'
 
 const mapboxToken = 'pk.eyJ1IjoiZXJyb2xtYXBib3giLCJhIjoiY2p6NzFiYzdtMDJqZDNtcXhmeGJpOHB4OSJ9.Iduf-XCdcQjRwbggcLdCwA'
-//instead of using the ReactMapboxGL component name, we've given it an alias and it already has a prop called 'accessToken' associated with it
 const Map = ReactMapboxGl({
   accessToken: mapboxToken,
 })
 
-// const MapContainer = ({ lat, long, sprite, locations }) => {
-//deconstruction - so you don't need to use 'props.' explicitly
 const MapContainer = (props) => {
   console.log(props.allLocations)
   console.log(props)
+
 
   return (
     <div className="location-container">
@@ -54,7 +52,7 @@ const MapContainer = (props) => {
           <h3>{props.currentPopupObj.title}</h3>
           <h5>{props.currentPopupObj.address}</h5>
           <div className="ui star rating" data-rating="3" data-max-rating="5">
-            <h5> Rating: {props.currentLocation.average_rating.average_review}</h5>
+            <h5> Rating: {props.currentPopupObj.average_rating.average_review}</h5>
           </div>
         </Popup> : null}
       </Map>

@@ -14,7 +14,7 @@ export default class Nav extends React.Component {
         {localStorage.getItem('user')? (
           <div className="item">
           <Link to='/locations/new'>
-          <div><i class="plus icon"></i>Location</div>
+          <div><i className="plus icon"></i>Location</div>
           </Link>
           </div>
         ) : null}
@@ -47,7 +47,7 @@ export default class Nav extends React.Component {
             <Link to='/profile'>
             <div
               className="ui primary">
-              <i class="user large blue circle icon"></i>
+              <i className="user large blue circle icon"></i>
             </div>
             </Link>
             </div>

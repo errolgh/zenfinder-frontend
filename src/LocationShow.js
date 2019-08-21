@@ -5,20 +5,32 @@ import Review from "./Review"
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
+// const latitude = locationObj.latitude || this.props.currentCenter.latitude
+// const longitude = locationObj.longitude || this.props.currentCenter.longitude
 class LocationShow extends React.Component {
+
 
   state = {
     currentUser: null,
-    currentLocation: null
+    currentLocation: null,
+    currentCenter: {
+      latitude:null,
+      longitude: null
+    }
   }
 
   componentDidMount(){
-    fetch(`http://localhost:3001${this.props.location.pathname}`)
+    fetch(`http://localhost:3001/${this.props.location.pathname}`)
     .then(r => r.json())
     .then(locationObj => {
-      console.log(locationObj)
+      console.log("locationObj:",locationObj)
       this.setState({
-        currentLocation: locationObj
+        currentLocation: locationObj,
+        currentcenter: {
+          latitude: locationObj.latitude,
+          longitude: locationObj.longitude
+        }
+
       })
     })
   }

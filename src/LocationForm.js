@@ -37,8 +37,9 @@ class LocationForm extends React.Component {
       })
     })
     .then(r => r.json())
-    .then(locationObj =>
-      this.props.history.push(`/locations/${locationObj.id}`)
+    .then(locationObj =>{
+      this.props.addLocation(locationObj)
+      this.props.history.push(`/locations/${locationObj.id}`)}
     )
   }
 
@@ -77,6 +78,16 @@ class LocationForm extends React.Component {
       coordinates={[this.state.currentCoordinates.longitude, this.state.currentCoordinates.latitude]}/>
   }
 
+  addPopup = () => {
+    return <Popup
+            coordinates={[this.state.currentCoordinates.longitude, this.state.currentCoordinates.latitude]}
+            offset={{
+      'bottom-left': [12, -38],  'bottom': [0, -38], 'bottom-right': [-12, -38]
+    }}>
+    <h3>New Location!</h3>
+    </Popup>
+  }
+
   render(){
     let lat
     let lng
@@ -111,6 +122,7 @@ class LocationForm extends React.Component {
               layout={{ 'icon-image': 'star-15' }}>
             {this.addFeature()}
             </Layer>
+            {this.addPopup()}
             </Map>
           </div>
         </div>

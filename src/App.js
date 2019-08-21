@@ -20,11 +20,13 @@ class App extends React.Component {
         currentUser: null,
         currentZoom: [12],
         allLocations: [],
+        locationObj: null,
         currentPopupObj: null,
         currentCenter: {
           latitude: 38.896138,
           longitude: -77.033255
-        }
+        },
+        selectedLocation: {}
       }
   }
 
@@ -37,6 +39,13 @@ componentDidMount(){
     })}
   )
 }
+
+  addLocation = (locationObj) => {
+    this.setState({
+      allLocations: [...this.state.allLocations, locationObj],
+      locationObj: locationObj
+    })
+  }
 
 passUserData = (currentUser) => {
   console.log("we are in passUserData: ", currentUser)
@@ -69,6 +78,7 @@ handleUnhover = () => {
 }
 
 handleLocation = (e, location) => {
+  debugger
   this.setState({
     currentLocation: location,
     currentPopupObj: location,
@@ -76,6 +86,10 @@ handleLocation = (e, location) => {
   console.log("clicky")
 }
 
+
+  selectAlocation = () => {
+    debugger
+  }
   render(){
     return(
       <div className="App">
@@ -102,6 +116,7 @@ handleLocation = (e, location) => {
                 currentLocation={this.state.currentLocation}
                 user={this.state.currentUser}
                 currentZoom={this.state.currentZoom}
+                selectAlocation={this.selectAlocation}
 
               />
             }/>
@@ -109,23 +124,23 @@ handleLocation = (e, location) => {
               path='/locations/new' render={()=>
                 <LocationForm
                 currentCenter={this.state.currentCenter}
+                addLocation={this.addLocation}
               />}
             />
             <Route path='/locations/:id' render={()=>
               <LocationShow
                 allLocations={this.state.allLocations}
-                currentLocation={this.state.currentLocation}
                 currentCenter={this.state.currentCenter}
                 handleHover={this.handleHover}
                 handleUnhover={this.handleUnhover}
                 currentPopupObj={this.state.currentPopupObj}
                 handleLocation={this.handleLocation}
                 user={this.state.currentUser}
+                locationObj={this.state.locationObj}
               />
             }/>
               <Route path='/reviews/new' render={() =>
                 <ReviewForm
-                  currentLocation={this.state.currentLocation}
                   user={this.state.currentUser}
                   history={this.props.history}
                 />
