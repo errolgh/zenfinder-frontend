@@ -31,7 +31,8 @@ class MapContainer extends React.Component{
           pitch={[12]}
           containerStyle={{
             height: '600px',
-            width: '800px'
+            width: '1200px',
+            margin: '0 auto'
           }}
         >
           <Layer

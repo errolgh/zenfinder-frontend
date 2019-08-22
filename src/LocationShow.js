@@ -50,8 +50,8 @@ class LocationShow extends React.Component {
             <h2>
               {this.state.currentLocation.title}  ( {this.state.currentLocation.average_rating.average_review}<i className="star icon yellow"></i><span>)</span>
             </h2>
-            <div className="ui two column grid col-height">
-              <div>
+            <div className="ui one column center aligned">
+              <div className="row">
               {this.state.currentLocation ? (
                 <MapContainer
                   handleHover={this.props.handleHover}
@@ -64,7 +64,7 @@ class LocationShow extends React.Component {
 
                 />) : null}
               </div>
-              <div>
+              <div className="ui three column center aligned">
               {this.state.currentLocation ? (
 
                 <div>
@@ -82,17 +82,16 @@ class LocationShow extends React.Component {
                 <div>
                 <h2>Reviews</h2>
               </div>
+              <div className="ui three column grid">
               {this.state.currentLocation ? (
 
 
 
 
                 this.state.currentLocation.reviews.length < 1 ? (
-                   (<h3>Be the first to review this location!</h3>
+                   (<h3 className="ui centered aligned grid">Be the first to review this location!</h3>
 
                 ) : null) :
-
-
 
 
                   this.state.currentLocation.reviews.map((review) => {
@@ -109,6 +108,7 @@ class LocationShow extends React.Component {
                     />
                   })
                 ) : null}
+                </div>
               </div>
             </div>
           </div>) : null}

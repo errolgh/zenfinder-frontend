@@ -22,7 +22,7 @@ export default class ProfileReview extends React.Component {
     console.log(" review props: ",this.props.review)
     console.log(" user props: ",this.props.userObj)
     return(
-      <div>
+      <div className= "column">
       {this.props.review ? (
           <div class="ui centered card">
 

@@ -9,18 +9,18 @@ export default class Location extends React.Component {
   render(){
     console.log("props:", this.props.location)
     return(
-      <React.Fragment>
-        <div class="ui centered card">
-          <div class="image">
+      <div className="column">
+        <div className="ui card testTwo">
+          <div className="image">
             <img src="https://cdn8.dissolve.com/p/D246_34_222/D246_34_222_1200.jpg"/>
           </div>
-          <div class="content">
-            <div class="header">{this.props.location.title}</div>
-              <div class="description">
+          <div className="content">
+            <div className="header">{this.props.location.title}</div>
+              <div className="description">
                 {this.props.location.address}
               </div>
-              <div class="meta">
-              <span class="date">"{this.props.location.description}"</span>
+              <div className="meta">
+              <span className="date">"{this.props.location.description}"</span>
               </div>
           </div>
           <div className="content">
@@ -43,7 +43,7 @@ export default class Location extends React.Component {
             </Link>
           </div>
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }

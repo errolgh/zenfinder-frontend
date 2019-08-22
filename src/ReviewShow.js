@@ -33,12 +33,12 @@ export default class ReviewShow extends React.Component {
             <h3>
               {this.state.currentReview.user.user_name}
             </h3>
-            <h2>
+            <h1>
               {this.state.currentReview.title}
-            </h2>
-            <div>
+            </h1>
+            <h2 className="header ui four wide centered aligned grid">
               "{this.state.currentReview.description}"
-            </div>
+            </h2>
             {this.state.currentReview ? (
             <Link to={`/locations/${this.state.currentReview.location.id}`}
               currentLocation={this.state.currentReview.location}

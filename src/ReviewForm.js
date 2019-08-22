@@ -82,7 +82,7 @@ export default class ReviewForm extends React.Component {
         <form
           className="ui form"
           onSubmit={this.handleReviewSubmit}>
-          <div className="eight wide field">
+          <div className="ui one center aligned grid">
             <label>Give your adventure a title</label>
             <input
               type="text"
@@ -91,7 +91,7 @@ export default class ReviewForm extends React.Component {
           </div>
 
 
-          <div className="eight wide field">
+          <div className="ui one center aligned grid">
             <label>Describe your experience</label>
             <textarea
               rows="2"
@@ -101,7 +101,7 @@ export default class ReviewForm extends React.Component {
           </div>
 
           <select
-            class="ui fluid dropdown four wide field"
+            className="ui one center aligned grid"
             onChange={this.handleRatingChange}
           >
             <option value="">Rate your Experience</option>

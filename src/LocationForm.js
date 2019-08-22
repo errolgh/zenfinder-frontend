@@ -128,7 +128,7 @@ class LocationForm extends React.Component {
         </div>
         <div>
         <form
-          className="ui form"
+          className="ui one column center aligned"
           onSubmit={this.handleLocationSubmit}>
           <div className="ui field four wide column">
             <h3 className="header">Title</h3>

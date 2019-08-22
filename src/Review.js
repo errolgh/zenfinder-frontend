@@ -31,9 +31,10 @@ export default class Review extends React.Component {
   render(){
     // console.log(this.props)
         return(
-      <React.Fragment>
+
+      <div className="ui column">
       {this.state.currentReview ? (
-          <div class="ui centered card">
+          <div class="ui card column test">
             <div class="image">
               <img src="http://www.nextfrontierinclusion.org/wp-content/uploads/job-manager-uploads/files/2017/12/user2-160x160.jpg"/>
             </div>
@@ -64,7 +65,7 @@ export default class Review extends React.Component {
             </div>
           </div>
         ) : null}
-      </React.Fragment>
+      </div>
     )
   }
 }

@@ -5,8 +5,8 @@ import LocationContainer from './LocationContainer'
 export default class Home extends React.Component {
   render(){
     return(
-      <div className="ui two column grid col-height">
-        <div className= "row">
+      <div className="">
+        <div className= "">
           <div>
             <MapContainer
             allLocations={this.props.allLocations}
@@ -16,11 +16,9 @@ export default class Home extends React.Component {
             handleLocation={this.props.handleLocation}
             currentLocation={this.props.currentLocation}
             currentCenter={this.props.currentCenter}
-
-            // currentZoom={this.props.currentZoom}
             />
           </div>
-          <div className="row">
+          <div>
             <LocationContainer
               allLocations={this.props.allLocations}
               currentCenter={this.props.currentCenter}

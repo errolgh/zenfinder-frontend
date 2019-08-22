@@ -8,7 +8,7 @@ export default class LocationContainer extends React.Component {
   }
     render(){
       return(
-        <div className= "location-container">
+        <div className= "ui four column grid">
           {
             this.props.allLocations.map(location => {
               return <Location
