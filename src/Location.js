@@ -7,7 +7,7 @@ export default class Location extends React.Component {
   }
 
   render(){
-    console.log("props:", this.props)
+    console.log("props:", this.props.location)
     return(
       <React.Fragment>
         <div class="ui centered card">
@@ -30,8 +30,14 @@ export default class Location extends React.Component {
           <div className="content">
             <Link to={`locations/${this.props.location.id}`}
                   className="header"
+                  currentLocation={this.props.showLocation}
+                  currentReview={this.props.currentReview}
+                  showLocation={this.props.showLocation}
                   onClick={(e)=>{this.props.handleLocation(e, this.props.location)}}>
-            <button className="ui button primary">
+            <button
+              className="ui button primary"
+              setCurrentReview={this.props.setCurrentReview}
+              showLocation={this.props.showLocation}>
               Details
             </button>
             </Link>

@@ -8,7 +8,7 @@ export default class ReviewForm extends React.Component {
     currentUser: null,
     currentTitle: "",
     currentDescription: "",
-    currentRating: ""
+    currentRating: "",
   }
 
   componentDidMount(){
@@ -20,7 +20,7 @@ export default class ReviewForm extends React.Component {
     .then(userObj => {
       this.setState({
         currentUser: userObj,
-        currentLocation: this.props.currentLocation
+        currentLocation: this.props.currentLocation,
       })
     })
   }
@@ -36,12 +36,14 @@ export default class ReviewForm extends React.Component {
         description: this.state.currentDescription,
         rating: this.state.currentRating,
         user_id: this.state.currentUser.id,
-        location_id: this.state.currentLocation.id
+        location_id: this.props.showLocation.id
       })
     })
     .then(r => r.json())
-    .then(reviewObj =>
-      this.props.history.push(`/reviews/${reviewObj.id}`)
+    .then(reviewObj =>{
+      debugger
+      this.props.setCurrentReview(reviewObj)
+      this.props.history.push(`/locations/${this.props.showLocation.id}`)}
     )
   }
 

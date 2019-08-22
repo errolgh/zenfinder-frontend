@@ -26,7 +26,9 @@ class App extends React.Component {
           latitude: 38.896138,
           longitude: -77.033255
         },
-        selectedLocation: {}
+        selectedLocation: {},
+        showLocation: {},
+        currentReview: {}
       }
   }
 
@@ -78,17 +80,21 @@ handleUnhover = () => {
 }
 
 handleLocation = (e, location) => {
-  debugger
   this.setState({
-    currentLocation: location,
+    showLocation: location,
     currentPopupObj: location,
     })
   console.log("clicky")
 }
 
+setCurrentReview = (reviewObj) =>{
+  this.setState({
+    currentReview:reviewObj
+  })
+}
+
 
   selectAlocation = () => {
-    debugger
   }
   render(){
     return(
@@ -113,10 +119,12 @@ handleLocation = (e, location) => {
                 currentPopupObj={this.state.currentPopupObj}
                 handleLocation={this.handleLocation}
                 currentCenter={this.state.currentCenter}
-                currentLocation={this.state.currentLocation}
                 user={this.state.currentUser}
                 currentZoom={this.state.currentZoom}
                 selectAlocation={this.selectAlocation}
+                showLocation={this.state.showLocation}
+                currentReview={this.state.currentReview}
+                setCurrentReview={this.setCurrentReview}
 
               />
             }/>
@@ -137,15 +145,29 @@ handleLocation = (e, location) => {
                 handleLocation={this.handleLocation}
                 user={this.state.currentUser}
                 locationObj={this.state.locationObj}
+                selectALocation={this.selectALocation}
+                currentLocation={this.state.showLocation}
+                setCurrentReview={this.setCurrentReview}
+                showLocation={this.state.showLocation}
+
               />
             }/>
               <Route path='/reviews/new' render={() =>
                 <ReviewForm
                   user={this.state.currentUser}
                   history={this.props.history}
+                  setCurrentReview={this.setCurrentReview}
+                  showLocation={this.state.showLocation}
+                  currentReview={this.state.currentReview}
                 />
               }/>
-              <Route path='/reviews/:id'component={ReviewShow}/>
+              <Route path='/reviews/:id'
+                    render={(props)=>
+                      <ReviewShow
+                      history={this.props.history}
+                      currentReview={this.state.currentReview}
+                        setCurrentReview={this.setCurrentReview}/>}/>
+
               <Route path="/login" render={()=>
                 localStorage.getItem('user') ? <Redirect to='/profile' /> :
                 <Login

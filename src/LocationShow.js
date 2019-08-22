@@ -35,7 +35,14 @@ class LocationShow extends React.Component {
     })
   }
 
+  setCurrentLocation = (locationObj) => {
+    this.setState({
+      currentLocation: locationObj
+    })
+  }
+
   render(){
+    console.log("history:", this.props.history.location.pathname.split("/")[2])
     return(
       <div>
         {this.state.currentLocation ? (
@@ -53,18 +60,26 @@ class LocationShow extends React.Component {
                   currentPopupObj={this.props.currentPopupObj}
                   handleLocation={this.props.handleLocation}
                   currentLocation={this.state.currentLocation}
+                  setCurrentReview={this.props.setCurrentReview}
+
                 />) : null}
               </div>
               <div>
+              {this.state.currentLocation ? (
+
                 <div>
                 <Link to='/reviews/new'
-                  currentLocation={this.props.currentLocation}
+                currentLocationId={this.props.history.location.pathname.split("/")[2]}
+                currentLocation={this.props.currentLocation}
                 >
-                  <button
-                    className="ui button huge primary">
-                    Review this Location
-                  </button>
+                <button
+                className="ui button huge primary">
+                Review this Location
+                </button>
                 </Link>
+                </div>
+              ) : null}
+                <div>
                 <h2>Reviews</h2>
               </div>
               {this.state.currentLocation ? (
@@ -88,6 +103,9 @@ class LocationShow extends React.Component {
                       currentPopupObj={this.props.currentPopupObj}
                       handleLocation={this.props.handleLocation}
                       review={review}
+                      setCurrentLocation={this.setCurrentLocation}
+                      currentReview={this.props.currentReview}
+                      setCurrentReview={this.props.setCurrentReview}
                     />
                   })
                 ) : null}

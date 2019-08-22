@@ -1,5 +1,6 @@
 import React from 'react'
 import Review from './Review'
+import ProfileReview from './ProfileReview'
 
 export default class Profile extends React.Component {
 
@@ -9,11 +10,9 @@ export default class Profile extends React.Component {
 
   componentDidMount(){
     let userId = localStorage.getItem('user')
-    console.log(userId)
     fetch(`http://localhost:3001/users/${userId}`)
     .then(r => r.json())
     .then(userObj => {
-      console.log("we are in componentDidMount")
       this.setState({
         currentUser: userObj
       })
@@ -45,7 +44,9 @@ export default class Profile extends React.Component {
             <div>
               <div className="ui row">
                 {this.state.currentUser.reviews.map(review => {
-                  return <Review review={review}/>
+                  return <ProfileReview
+                            review={review}
+                          />
                 }
                 )}
             </div>

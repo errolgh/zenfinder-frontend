@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default class Review extends React.Component {
+  // let name
 
   state = {
     currentReview: null,
@@ -25,9 +26,10 @@ export default class Review extends React.Component {
       })
     )
   }
+
  // && this.state.currentLocation
   render(){
-    // console.log(this.props.review)
+    // console.log(this.props)
         return(
       <React.Fragment>
       {this.state.currentReview ? (
@@ -50,8 +52,12 @@ export default class Review extends React.Component {
             </div>
             <div className="content">
               <Link to={`/reviews/${this.state.currentReview.id}`}
-                    className="header">
-              <button className="ui button primary">
+                    className="header"
+                    currentReview={this.props.currentReview}
+                    setCurrentReview={this.props.setCurrentReview}>
+              <button
+                className="ui button primary"
+                onClick={()=>{this.props.setCurrentLocation(this.state.reviewLocation)}}>
                 Details
               </button>
               </Link>

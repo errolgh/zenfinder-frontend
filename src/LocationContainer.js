@@ -15,6 +15,10 @@ export default class LocationContainer extends React.Component {
                         location={location}
                         handleLocation={this.props.handleLocation}
                         selectAlocation={this.selectAlocation}
+                        showLocation={this.props.showLocation}
+                        currentReview={this.props.currentReview}
+                        setCurrentReview={this.props.setCurrentReview}
+
                     />
             })
           }

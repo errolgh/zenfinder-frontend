@@ -8,9 +8,12 @@ export default class ReviewShow extends React.Component {
   }
 
   componentDidMount(){
-    fetch(`http://localhost:3001/reviews/${this.props.match.params.id}`)
+    console.log(this.props)
+    let id = this.props.history.location.pathname.split("/")[2]
+    fetch(`http://localhost:3001/reviews/${id}`)
     .then(r => r.json())
     .then(reviewObj =>  {
+
       console.log(reviewObj)
       this.setState({
         currentReview: reviewObj,
@@ -19,6 +22,7 @@ export default class ReviewShow extends React.Component {
   }
 
   render(){
+    console.log("currentrevewi:", this.state.currentReview)
     return(
       <div>
         <div>

@@ -26,7 +26,9 @@ export default class Home extends React.Component {
               currentCenter={this.props.currentCenter}
               handleLocation={this.props.handleLocation}
               selectAlocation={this.props.selectAlocation}
-
+              showLocation={this.props.showLocation}
+              currentReview={this.props.currentReview}
+              setCurrentReview={this.props.setCurrentReview}
             />
           </div>
         </div>
